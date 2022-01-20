@@ -11,8 +11,8 @@ typedef uint16_t register_t;
 class modbus_ctx
 {
 public:
-    modbus_ctx(const char *ComPort = "COM7", int Baud = 38400, int Parity = 'N', int DataBits = 8, int StopBits = 1);
-    int ModbusRtuInit();
+    modbus_ctx(const char *ComPort = "COM1", int Baud = 38400, int Parity = 'N', int DataBits = 8, int StopBits = 1);
+    int ModbusRtuInit(void);
     int ModbusRtuConnect();
     void ModbusRtuDisconnect();
     void setComPort(QString &);

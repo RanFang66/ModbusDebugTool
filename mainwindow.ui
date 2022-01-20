@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>484</width>
-    <height>576</height>
+    <width>445</width>
+    <height>577</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -29,7 +29,17 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="inputComPort"/>
+        <widget class="QLineEdit" name="inputComPort">
+         <property name="minimumSize">
+          <size>
+           <width>45</width>
+           <height>24</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>COM1</string>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QLabel" name="label_7">
@@ -39,10 +49,24 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="inputBaudrate"/>
+        <widget class="QLineEdit" name="inputBaudrate">
+         <property name="minimumSize">
+          <size>
+           <width>45</width>
+           <height>24</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>38400</string>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btnConnect">
+         <property name="styleSheet">
+          <string notr="true">selection-background-color: rgb(255, 255, 102);
+background-color: rgb(235, 235, 235);</string>
+         </property>
          <property name="text">
           <string>connect</string>
          </property>
@@ -83,29 +107,69 @@
        </item>
        <item row="1" column="0">
         <widget class="QPushButton" name="btnReadInputRegs">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>20</height>
+          </size>
+         </property>
          <property name="text">
           <string>Read Input Registers</string>
          </property>
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QSpinBox" name="spinReadInputAddr"/>
+        <widget class="QSpinBox" name="spinReadInputAddr">
+         <property name="minimumSize">
+          <size>
+           <width>45</width>
+           <height>24</height>
+          </size>
+         </property>
+        </widget>
        </item>
        <item row="1" column="2">
-        <widget class="QSpinBox" name="spinReadInputNum"/>
+        <widget class="QSpinBox" name="spinReadInputNum">
+         <property name="minimumSize">
+          <size>
+           <width>45</width>
+           <height>24</height>
+          </size>
+         </property>
+        </widget>
        </item>
        <item row="2" column="0">
         <widget class="QPushButton" name="btnReadHoldingRegs">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>20</height>
+          </size>
+         </property>
          <property name="text">
           <string>Read Holding Registers</string>
          </property>
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QSpinBox" name="spinReadHoldingAddr"/>
+        <widget class="QSpinBox" name="spinReadHoldingAddr">
+         <property name="minimumSize">
+          <size>
+           <width>45</width>
+           <height>24</height>
+          </size>
+         </property>
+        </widget>
        </item>
        <item row="2" column="2">
-        <widget class="QSpinBox" name="spinReadHoldingNum"/>
+        <widget class="QSpinBox" name="spinReadHoldingNum">
+         <property name="minimumSize">
+          <size>
+           <width>45</width>
+           <height>24</height>
+          </size>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -139,16 +203,42 @@
        </item>
        <item row="1" column="0">
         <widget class="QPushButton" name="btnWriteSingleReg">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>20</height>
+          </size>
+         </property>
          <property name="text">
           <string>Write Single Register</string>
          </property>
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QSpinBox" name="spinBox_7"/>
+        <widget class="QSpinBox" name="spinWriteAddr">
+         <property name="minimumSize">
+          <size>
+           <width>45</width>
+           <height>24</height>
+          </size>
+         </property>
+        </widget>
        </item>
        <item row="1" column="2">
-        <widget class="QLineEdit" name="editWriteValue"/>
+        <widget class="QLineEdit" name="inputWriteValue">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>45</width>
+           <height>24</height>
+          </size>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -163,7 +253,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>484</width>
+     <width>445</width>
      <height>20</height>
     </rect>
    </property>

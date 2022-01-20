@@ -11,7 +11,8 @@ int modbus_ctx::ModbusRtuInit()
     ctx = modbus_new_rtu(m_ComPort, m_Baudrate, m_ParityCheck, m_DataBits, m_StopBits);
     if (ctx == NULL)
         return -1;
-
+    modbus_set_slave(ctx, 1);
+    modbus_set_response_timeout(ctx, 3, 1000);
     return 0;
 }
 
@@ -30,6 +31,7 @@ int modbus_ctx::ModbusRtuConnect()
 void modbus_ctx::ModbusRtuDisconnect()
 {
     modbus_close(ctx);
+    modbus_free(ctx);
     m_connect_state = false;
 }
 

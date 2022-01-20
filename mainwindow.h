@@ -21,6 +21,10 @@ private slots:
 
     void on_btnConnect_clicked(bool checked);
 
+    void on_btnReadHoldingRegs_clicked();
+
+    void on_btnWriteSingleReg_clicked();
+
 private:
     Ui::MainWindow *ui;
     modbus_ctx mb_ctx;
