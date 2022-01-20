@@ -27,6 +27,9 @@ public:
     {
         return m_connect_state;
     }
+
+    register_t     RecvBuff[BUFF_SIZE];
+    register_t     SendBuff[BUFF_SIZE];
 private:
     modbus_t *ctx;
     const char* m_ComPort;
@@ -35,8 +38,7 @@ private:
     int     m_DataBits;
     int     m_StopBits;
     bool    m_connect_state;
-    register_t     RecvBuff[BUFF_SIZE];
-    register_t     SendBuff[BUFF_SIZE];
+
 };
 
 #endif // MODBUS_CTX_H

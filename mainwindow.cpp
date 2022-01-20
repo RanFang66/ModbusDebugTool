@@ -21,6 +21,7 @@ void MainWindow::on_btnReadInputRegs_clicked()
     int addr = 0;
     int len = 0;
     int ret = 0;
+    QString ReadData = "";
 
     txt = ui->spinReadInputAddr->text();
     addr = txt.toInt();
@@ -29,9 +30,14 @@ void MainWindow::on_btnReadInputRegs_clicked()
     len = txt.toInt();
     ret = mb_ctx.ReadInputRegs(addr, len);
     if (ret > 0) {
-        ui->txtDisp->appendPlainText("read ok.\n");
+        ui->txtDisp->appendPlainText("Read Input Registers:");
+        for (int i = 0; i < ret; i++) {
+            ReadData += QString::number(mb_ctx.RecvBuff[i], 16);
+            ReadData += "\t";
+        }
+        ui->txtDisp->appendPlainText(ReadData);
     } else {
-        ui->txtDisp->appendPlainText("READ FAILED.\n");
+        ui->txtDisp->appendPlainText("Read Input Registers Failed.");
     }
 }
 
@@ -49,26 +55,26 @@ void MainWindow::on_btnConnect_clicked(bool checked)
     if (txt.startsWith("COM", Qt::CaseInsensitive) && txt[3].isDigit()) {
         mb_ctx.setComPort(txt);
     } else {
-        ui->txtDisp->appendPlainText("INPUT COM PORT INVALID!\n");
+        ui->txtDisp->appendPlainText("Input COM Port Invalid!");
         return;
     }
 
 
     if (checked) {
         if (mb_ctx.ModbusRtuInit() == -1) {
-            ui->txtDisp->appendPlainText("INIT MODBUS FAILED!\n");
+            ui->txtDisp->appendPlainText("Init Modbus Failed!");
             return;
         }
         ret = mb_ctx.ModbusRtuConnect();
         if (ret == -1) {
-            ui->txtDisp->appendPlainText("COM PORT OPEN FAILED.\n");
+            ui->txtDisp->appendPlainText("COM Port Open Failed.");
         } else {
-            ui->txtDisp->appendPlainText("CONNECT SUCCESS!");
+            ui->txtDisp->appendPlainText("Connect Success!");
         }
     } else {
         if (mb_ctx.ModbusRtuIsConnected()) {
             mb_ctx.ModbusRtuDisconnect();
-            ui->txtDisp->appendPlainText("DISCONNECT OK");
+            ui->txtDisp->appendPlainText("Disconnect OK");
         }
     }
 }
@@ -79,6 +85,7 @@ void MainWindow::on_btnReadHoldingRegs_clicked()
     int addr = 0;
     int len = 0;
     int ret = 0;
+    QString ReadData = "";
 
     txt = ui->spinReadHoldingAddr->text();
     addr = txt.toInt();
@@ -87,9 +94,13 @@ void MainWindow::on_btnReadHoldingRegs_clicked()
     len = txt.toInt();
     ret = mb_ctx.ReadHoldingRegs(addr, len);
     if (ret > 0) {
-        ui->txtDisp->appendPlainText("Read Input Register OK.\n");
+        ui->txtDisp->appendPlainText("Read Holding Registers:");
+        for (int i = 0; i < ret; i++) {
+            ReadData += QString::number(mb_ctx.RecvBuff[i], 16);
+            ReadData += "\t";
+        }
     } else {
-        ui->txtDisp->appendPlainText("READ FAILED.\n");
+        ui->txtDisp->appendPlainText("Read Holding Registers Failed.");
     }
 }
 
@@ -107,8 +118,8 @@ void MainWindow::on_btnWriteSingleReg_clicked()
     val = txt.toInt();
     ret = mb_ctx.WriteSingleReg(addr, val);
     if (ret != -1) {
-        ui->txtDisp->appendPlainText("Write Single Register OK.\n");
+        ui->txtDisp->appendPlainText("Write Single Register OK.");
     } else {
-        ui->txtDisp->appendPlainText("Write FAILED.\n");
+        ui->txtDisp->appendPlainText("Write Failed.\n");
     }
 }
